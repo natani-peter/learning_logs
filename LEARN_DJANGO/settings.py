@@ -97,5 +97,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 BOOTSTRAP3 = {
     'include_jquery': True
 }
-CSRF_TRUSTED_ORIGINS=['https://*.https://web-production-ffda.up.railway.app/']
+CSRF_TRUSTED_ORIGINS=['https://*.web-production-ffda.up.railway.app/']
 
