@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from .models import Topic, Entry
 from . import forms
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
 
 
 # Create your views here.
@@ -40,6 +41,7 @@ def topic_entries(request, topic_id):
 
 
 @login_required(login_url='users:login')
+@csrf_exempt
 def add_new_topic(request):
     if request.method != "POST":
         form = forms.TopicForm()
@@ -55,6 +57,7 @@ def add_new_topic(request):
 
 
 @login_required(login_url='users:login')
+@csrf_exempt
 def add_new_entry(request, topic_id):
     current_topic = Topic.objects.get(id=topic_id)
     gate_pass = verify_user(request,current_topic)
@@ -76,6 +79,7 @@ def add_new_entry(request, topic_id):
 
 
 @login_required(login_url='users:login')
+@csrf_exempt
 def edit_entry(request, entry_id):
     to_be_edited = Entry.objects.get(id=entry_id)
     topic = to_be_edited.topic
